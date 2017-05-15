@@ -1,24 +1,21 @@
 #pragma once
 
-#include "ofMain.h"
-#include "Human.hpp"
-#include "Mammal.hpp"
-#include "Cat.hpp"
-#include "Animal.hpp"
+//#include "ofMain.h"
+//#include "Human.hpp"
+//#include "Mammal.hpp"
+//#include "Cat.hpp"
+//#include "Animal.hpp"
+//#include "BaseAI.hpp"
+//#include "Bacteria.hpp"
+#include "WorldMap.hpp"
 
-class ofApp : public ofBaseApp{
-
+class ofApp : public ofBaseApp
+{
 	public:
 		void setup();
 		void update();
 		void draw();
-		
-		void Movement(Animal *animal);
-		void ConsumeFood(Animal *animal);
-		
-		Human h;
-		Cat c;
-		Animal a;
-		Mammal m;
-		Cat *ptC = &c;
+  
+		WorldMap worldmap = new WorldMap(Forest);
+	private:
 };

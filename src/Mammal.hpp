@@ -18,17 +18,12 @@ class Mammal : public Animal
 	Mammal();
 	~Mammal();
   
-	virtual void GiveBirth()
-	{
-	  std::cout << "Sick, a smaller me!" << std::endl;
-	}
-	
+	virtual void GiveBirth(){};
 	bool isAlive();
 	
 	bool isHeartbeating;
 	
-	void Move() { std::cout << "And so I walk."  << std::endl; } 
-	
+	void Move();
 };
 
 #endif /* Mammal_hpp */

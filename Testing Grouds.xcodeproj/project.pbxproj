@@ -15,7 +15,7 @@
 		BF057CB91EC9FE7D009A7929 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CAE1EC9FE7D009A7929 /* main.cpp */; };
 		BF057CBA1EC9FE7D009A7929 /* Mammal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CAF1EC9FE7D009A7929 /* Mammal.cpp */; };
 		BF057CBB1EC9FE7D009A7929 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CB11EC9FE7D009A7929 /* ofApp.cpp */; };
-		BF057CBC1EC9FE7D009A7929 /* Species.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CB31EC9FE7D009A7929 /* Species.cpp */; };
+		BF057CD31ECA1329009A7929 /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CD11ECA1329009A7929 /* WorldMap.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +64,8 @@
 		BF057CB01EC9FE7D009A7929 /* Mammal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mammal.hpp; sourceTree = "<group>"; };
 		BF057CB11EC9FE7D009A7929 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
 		BF057CB21EC9FE7D009A7929 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
-		BF057CB31EC9FE7D009A7929 /* Species.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Species.cpp; sourceTree = "<group>"; };
+		BF057CD11ECA1329009A7929 /* WorldMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldMap.cpp; sourceTree = "<group>"; };
+		BF057CD21ECA1329009A7929 /* WorldMap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WorldMap.hpp; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../Documents/openFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* Testing GroudsDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Testing GroudsDebug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
@@ -122,22 +123,23 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				BF057CAE1EC9FE7D009A7929 /* main.cpp */,
+				BF057CB11EC9FE7D009A7929 /* ofApp.cpp */,
+				BF057CB21EC9FE7D009A7929 /* ofApp.h */,
+				BF057CD11ECA1329009A7929 /* WorldMap.cpp */,
+				BF057CD21ECA1329009A7929 /* WorldMap.hpp */,
 				BF057CA41EC9FE7D009A7929 /* Animal.cpp */,
 				BF057CA51EC9FE7D009A7929 /* Animal.hpp */,
 				BF057CA61EC9FE7D009A7929 /* Bacteria.cpp */,
 				BF057CA71EC9FE7D009A7929 /* Bacteria.hpp */,
-				BF057CA81EC9FE7D009A7929 /* BaseAI.cpp */,
-				BF057CA91EC9FE7D009A7929 /* BaseAI.hpp */,
 				BF057CAA1EC9FE7D009A7929 /* Cat.cpp */,
 				BF057CAB1EC9FE7D009A7929 /* Cat.hpp */,
 				BF057CAC1EC9FE7D009A7929 /* Human.cpp */,
 				BF057CAD1EC9FE7D009A7929 /* Human.hpp */,
-				BF057CAE1EC9FE7D009A7929 /* main.cpp */,
 				BF057CAF1EC9FE7D009A7929 /* Mammal.cpp */,
 				BF057CB01EC9FE7D009A7929 /* Mammal.hpp */,
-				BF057CB11EC9FE7D009A7929 /* ofApp.cpp */,
-				BF057CB21EC9FE7D009A7929 /* ofApp.h */,
-				BF057CB31EC9FE7D009A7929 /* Species.cpp */,
+				BF057CA81EC9FE7D009A7929 /* BaseAI.cpp */,
+				BF057CA91EC9FE7D009A7929 /* BaseAI.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -241,8 +243,8 @@
 				BF057CBB1EC9FE7D009A7929 /* ofApp.cpp in Sources */,
 				BF057CB71EC9FE7D009A7929 /* Cat.cpp in Sources */,
 				BF057CB51EC9FE7D009A7929 /* Bacteria.cpp in Sources */,
-				BF057CBC1EC9FE7D009A7929 /* Species.cpp in Sources */,
 				BF057CB91EC9FE7D009A7929 /* main.cpp in Sources */,
+				BF057CD31ECA1329009A7929 /* WorldMap.cpp in Sources */,
 				BF057CB41EC9FE7D009A7929 /* Animal.cpp in Sources */,
 				BF057CBA1EC9FE7D009A7929 /* Mammal.cpp in Sources */,
 				BF057CB61EC9FE7D009A7929 /* BaseAI.cpp in Sources */,

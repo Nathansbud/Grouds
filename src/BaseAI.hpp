@@ -11,7 +11,11 @@
 
 #include <stdio.h>
 
-
+class BaseAI
+{
+  BaseAI();
+  ~BaseAI();
+};
 
 
 #endif /* BaseAI_hpp */

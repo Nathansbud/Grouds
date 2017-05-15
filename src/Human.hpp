@@ -18,8 +18,9 @@ class Human : public Mammal
   public:
 	Human();
 	~Human();
-	void Eat() { std::cout << "Apex predator, nerds!" << std::endl; }
-	void GiveBirth() { std::cout << "Sick, a baby!" << std::endl; }
+	void Eat();
+	void Move();
+	void GiveBirth();
 };
 
 #endif /* Human_hpp */

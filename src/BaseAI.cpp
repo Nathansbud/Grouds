@@ -7,3 +7,13 @@
 //
 
 #include "BaseAI.hpp"
+
+BaseAI::BaseAI()
+{
+
+}
+
+BaseAI::~BaseAI()
+{
+
+}

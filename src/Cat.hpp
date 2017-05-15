@@ -14,8 +14,10 @@
 
 class Cat : public Mammal
 {
-  void Eat() { std::cout << "Yum, milk" << std::endl; }
-  void Move() {std::cout << "Look at these 4 paws I possess, man" << std::endl;}
+  Cat();
+  ~Cat();
+  void Eat();
+  void Move();
 };
 
 #endif /* Cat_hpp */

@@ -18,11 +18,9 @@ class Bacteria : public Animal
   	enum Disease{Malaria};
 	Bacteria(Disease disease);
 	~Bacteria();
-  
+	void Eat();
+	void Move();
 	std::string type;
-	
-  
-  
 };
 
 

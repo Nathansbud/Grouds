@@ -17,9 +17,9 @@ class Animal
   public:
 	Animal();
 	~Animal();
-	virtual void Eat() {std::cout << "Yum look at dis food" << std::endl;}
-	virtual void Move() {std::cout << "Motion" << std::endl;}
-	virtual bool isAlive(){}
+	virtual void Eat(){};
+	virtual void Move(){};
+	virtual bool isAlive(){};
 };
 
 

@@ -8,6 +8,16 @@
 
 #include "Mammal.hpp"
 
+Mammal::Mammal()
+{
+  isHeartbeating = true;
+}
+
+Mammal::~Mammal()
+{
+
+}
+
 bool Mammal::isAlive()
 {
   isHeartbeating ? 1 : 0;
