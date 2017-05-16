@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+#include "ofMain.h"
+#include "Tile.hpp"
 
 class WorldMap
 {
@@ -21,17 +23,20 @@ class WorldMap
 	void Draw();
 	void Update();
 	int CurrentLevel();
-  
+	enum Level {Forest, Desert, Ocean, END};
+
   private:
 	void LoadMap(int level);
 	std::ifstream map;
 	std::string line;
 	int tiles[8][8];
-	enum Level {Forest, Desert, Ocean, END};
+	Tile tileMap[8][8];
+
 	Level _level;
 	enum Type {Default = 0, Tree = 1, Water = 2, Player = 9};
 	Type _type;
 	void Parse();
+	void SetupTileMap();
 };
 
 #endif /* WorldMap_hpp */

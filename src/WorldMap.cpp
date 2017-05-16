@@ -12,7 +12,7 @@ WorldMap::WorldMap(int level)
 {
   _level = (Level)level;
   
-  LoadMap(_level);
+  LoadMap(level);
 }
 
 WorldMap::~WorldMap()
@@ -22,7 +22,14 @@ WorldMap::~WorldMap()
 
 void WorldMap::Draw()
 {
-
+ for(int i = 0; i < 8; i++)
+  {
+	for(int j = 0; j < 8; j++)
+	{
+	  tileMap[i][j].Draw();
+	  tileMap[i][j].SetPos(tileMap[i][j].GetSeedPos().x + (tileMap[i][j].GetSize().x * j), tileMap[i][j].GetSeedPos().y + (tileMap[i][j].GetSize().y * i));
+	}
+  }
 }
 
 void WorldMap::Update()
@@ -54,7 +61,10 @@ void WorldMap::LoadMap(int level)
   {
 	for(int j = 0; j < 8; j++)
 	{
-	  map >> tiles[i][j];
+	  static int id = 0;
+	  while(getline(map, line)) map >> tiles[i][j];
+	  tileMap[i][j] = Tile(tiles[i][j], id);
+	  id++;
 	}
   }
   
@@ -65,15 +75,7 @@ void WorldMap::LoadMap(int level)
 
 void WorldMap::Parse()
 {
-  /*
   
-  0 = Ground
-  1 = Tree
-  2 = Water
-  3 ~ 8 = ???
-  9 = Player
-  
-  */
 }
 
 int WorldMap::CurrentLevel()
