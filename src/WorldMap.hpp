@@ -15,28 +15,35 @@
 #include "ofMain.h"
 #include "Tile.hpp"
 
+
+enum class MapType
+{
+  FOREST,
+  DESERT,
+  OCEAN
+};
+
 class WorldMap
 {
   public:
-	WorldMap(int level);
+	WorldMap();
+	WorldMap(MapType mapType);
 	~WorldMap();
 	void Draw();
 	void Update();
 	int CurrentLevel();
-	enum Level {Forest, Desert, Ocean, END};
 
   private:
-	void LoadMap(int level);
-	std::ifstream map;
+	void LoadMap(MapType level);
+	std::ifstream gameMap;
 	std::string line;
 	int tiles[8][8];
 	Tile tileMap[8][8];
-
-	Level _level;
-	enum Type {Default = 0, Tree = 1, Water = 2, Player = 9};
-	Type _type;
 	void Parse();
 	void SetupTileMap();
+	MapType _mapType;
 };
+
+
 
 #endif /* WorldMap_hpp */

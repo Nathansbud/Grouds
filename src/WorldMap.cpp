@@ -8,11 +8,14 @@
 
 #include "WorldMap.hpp"
 
-WorldMap::WorldMap(int level)
+WorldMap::WorldMap()
 {
-  _level = (Level)level;
-  
-  LoadMap(level);
+
+}
+
+WorldMap::WorldMap(MapType mapType)
+{
+  LoadMap(mapType);
 }
 
 WorldMap::~WorldMap()
@@ -27,7 +30,6 @@ void WorldMap::Draw()
 	for(int j = 0; j < 8; j++)
 	{
 	  tileMap[i][j].Draw();
-	  tileMap[i][j].SetPos(tileMap[i][j].GetSeedPos().x + (tileMap[i][j].GetSize().x * j), tileMap[i][j].GetSeedPos().y + (tileMap[i][j].GetSize().y * i));
 	}
   }
 }
@@ -37,40 +39,43 @@ void WorldMap::Update()
 
 }
 
-void WorldMap::LoadMap(int level)
+void WorldMap::LoadMap(MapType mapType)
 {
-  std::string stage;
+  std::string currentStage;
+  std::string stage[] = {"forest", "desert", "ocean"};
   
-  switch(level)
+  switch(mapType)
   {
-	case 0:
-	  stage = "forest";
+	case FOREST:
+	  currentStage = stage[FOREST];
 	  break;
-	case 1:
-	  stage = "desert";
+	case DESERT:
+	  currentStage = stage[DESERT];
 	  break;
-	case 2:
-	  stage = "ocean";
+	case OCEAN:
+	  currentStage = stage[OCEAN];
 	  break;
   }
   
-  map.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/" + stage + ".txt");
-  if (!map) std::cout << "Map failed to initialize" << std::endl;
+  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/" + currentStage + ".txt");
+  if (!gameMap) std::cout << "Map failed to initialize" << std::endl;
   
   for(int i = 0; i < 8; i++)
   {
 	for(int j = 0; j < 8; j++)
 	{
 	  static int id = 0;
-	  while(getline(map, line)) map >> tiles[i][j];
-	  tileMap[i][j] = Tile(tiles[i][j], id);
+	  while(getline(gameMap, line)) gameMap >> tiles[i][j];
+	  tileMap[i][j] = Tile((Tile::TileType)tiles[i][j], id);
+	  tileMap[i][j].SetPos(tileMap[i][j].GetSeedPos().x + (tileMap[i][j].GetSize().x * j), tileMap[i][j].GetSeedPos().y + (tileMap[i][j].GetSize().y * i));
+
 	  id++;
 	}
   }
   
   std::cout << tiles << std::endl;
   
-  map.close();
+  gameMap.close();
 }
 
 void WorldMap::Parse()
@@ -80,5 +85,5 @@ void WorldMap::Parse()
 
 int WorldMap::CurrentLevel()
 {
-  return _level;
+  return _mapType;
 }

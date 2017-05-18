@@ -16,7 +16,7 @@ class ofApp : public ofBaseApp
 		void update();
 		void draw();
 		
-		WorldMap worldmap = WorldMap(WorldMap::Forest);
-	private:
+		WorldMap wMap();
+	  private:
 };
 
