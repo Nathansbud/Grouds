@@ -16,8 +16,10 @@ enum class TileType
 {
   GROUND = 0,
   TREE = 1,
-  WATER = 2,
-  PLAYER = 9
+  SAND = 2,
+  WATER = 3,
+  PLAYER = 9,
+  INVALID
 };
 
 class Tile
@@ -46,8 +48,6 @@ class Tile
 	ofVec2f _pos;
 	TileType _type;
 	
-	
-
 };
 
 #endif /* Tile_hpp */

@@ -8,15 +8,14 @@
 //#include "BaseAI.hpp"
 //#include "Bacteria.hpp"
 #include "WorldMap.hpp"
-
 class ofApp : public ofBaseApp
 {
 	public:
 		void setup();
 		void update();
 		void draw();
-		
-		WorldMap wMap();
-	  private:
+  
+		WorldMap* wMap;
+  private:
 };
 

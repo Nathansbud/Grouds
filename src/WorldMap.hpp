@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "ofMain.h"
 #include "Tile.hpp"
 
@@ -20,7 +21,8 @@ enum class MapType
 {
   FOREST,
   DESERT,
-  OCEAN
+  OCEAN,
+  INVALID
 };
 
 class WorldMap
@@ -31,17 +33,20 @@ class WorldMap
 	~WorldMap();
 	void Draw();
 	void Update();
-	int CurrentLevel();
+	MapType CurrentLevel();
 
   private:
 	void LoadMap(MapType level);
 	std::ifstream gameMap;
 	std::string line;
-	int tiles[8][8];
-	Tile tileMap[8][8];
+	static const int ROW_WIDTH = 8;
+	static const int ROW_HEIGHT = 8;
+//	int tiles[ROW_WIDTH][ROW_HEIGHT];
+	Tile* tileMap[ROW_WIDTH][ROW_HEIGHT];
 	void Parse();
 	void SetupTileMap();
 	MapType _mapType;
+	TileType _tileType;
 };
 
 

@@ -7,10 +7,11 @@
 //
 
 #include "WorldMap.hpp"
+#include <string>
 
 WorldMap::WorldMap()
 {
-
+  std::cout << "kill me" << std::endl;
 }
 
 WorldMap::WorldMap(MapType mapType)
@@ -29,7 +30,7 @@ void WorldMap::Draw()
   {
 	for(int j = 0; j < 8; j++)
 	{
-	  tileMap[i][j].Draw();
+	  tileMap[i][j]->Draw();
 	}
   }
 }
@@ -42,39 +43,67 @@ void WorldMap::Update()
 void WorldMap::LoadMap(MapType mapType)
 {
   std::string currentStage;
-  std::string stage[] = {"forest", "desert", "ocean"};
   
   switch(mapType)
   {
 	case MapType::FOREST:
-	  currentStage = stage[MapType::FOREST];
+	  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/forest.txt");
 	  break;
 	case MapType::DESERT:
-	  currentStage = stage[MapType::DESERT];
+	  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/desert.txt");
 	  break;
 	case MapType::OCEAN:
-	  currentStage = stage[MapType::OCEAN];
+	  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/ocean.txt");
 	  break;
+	case MapType::INVALID:
+	  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/template.txt");
   }
   
-  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/" + currentStage + ".txt");
-  if (!gameMap) std::cout << "Map failed to initialize" << std::endl;
+  int id = 0;
   
-  for(int i = 0; i < 8; i++)
+  if (!gameMap) std::cout << "Map failed to initialize" << std::endl;
+  else std::cout << "Everything went according to plan, boss!" << std::endl;
+  
+  int i = -1;
+  
+  while(std::getline(gameMap, line))
   {
-	for(int j = 0; j < 8; j++)
+	i++;
+	for(int j = 0; j < ROW_HEIGHT; j++)
 	{
-	  static int id = 0;
-	  while(getline(gameMap, line)) gameMap >> tiles[i][j];
-	  tileMap[i][j] = Tile((Tile::TileType)tiles[i][j], id);
-	  tileMap[i][j].SetPos(tileMap[i][j].GetSeedPos().x + (tileMap[i][j].GetSize().x * j), tileMap[i][j].GetSeedPos().y + (tileMap[i][j].GetSize().y * i));
-
+	  
+//	  tiles[i][j] = line[j];
+//	  std::cout << tiles[i][j] << std::endl;
+	  
+	  switch(line[j])
+	  {
+		case 48:
+		  _tileType = TileType::GROUND;
+		  break;
+		case 49:
+		  _tileType = TileType::TREE;
+		  break;
+		case 50:
+		  _tileType = TileType::SAND;
+		  break;
+		case 51:
+		  _tileType = TileType::WATER;
+		  break;
+		case 58:
+		  _tileType = TileType::PLAYER;
+		  break;
+		default:
+		  _tileType = TileType::INVALID;
+		  break;
+	  }
+	  
+	  tileMap[i][j] = new Tile(_tileType, id); //(TileType)tiles[i][j];
+	  tileMap[i][j]->SetPos(tileMap[i][j]->GetSeedPos().x + (tileMap[i][j]->GetSize().x * j), tileMap[i][j]->GetSeedPos().y + (tileMap[i][j]->GetSize().y * i));
 	  id++;
 	}
+	
+	if(!gameMap) break;
   }
-  
-  std::cout << tiles << std::endl;
-  
   gameMap.close();
 }
 
@@ -83,7 +112,7 @@ void WorldMap::Parse()
   
 }
 
-int WorldMap::CurrentLevel()
+MapType WorldMap::CurrentLevel()
 {
   return _mapType;
 }

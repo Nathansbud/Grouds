@@ -30,19 +30,24 @@ Tile::~Tile()
 void Tile::Draw()
 {
   ofFill();
-  switch(GetID())
+  switch(GetType())
   {
-	case 0:
+	case TileType::GROUND:
 	  ofSetColor(76, 70, 50);
 	  break;
-	case 1:
+	case TileType::TREE:
 	  ofSetColor(0, 100, 0);
 	  break;
-	case 2:
-	  ofSetColor(235, 244, 250);
+	case TileType::SAND:
+	  ofSetColor(237, 201, 175);
 	  break;
-	default:
+	case TileType::WATER:
+	  ofSetColor(0, 255, 255);
+	  break;
+	case TileType::PLAYER:
 	  ofSetColor(0);
+	  break;
+	case TileType::INVALID:
 	  break;
 	
   }
