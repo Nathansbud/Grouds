@@ -46,14 +46,14 @@ void WorldMap::LoadMap(MapType mapType)
   
   switch(mapType)
   {
-	case FOREST:
-	  currentStage = stage[FOREST];
+	case MapType::FOREST:
+	  currentStage = stage[MapType::FOREST];
 	  break;
-	case DESERT:
-	  currentStage = stage[DESERT];
+	case MapType::DESERT:
+	  currentStage = stage[MapType::DESERT];
 	  break;
-	case OCEAN:
-	  currentStage = stage[OCEAN];
+	case MapType::OCEAN:
+	  currentStage = stage[MapType::OCEAN];
 	  break;
   }
   
