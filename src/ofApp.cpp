@@ -2,7 +2,7 @@
 
 void ofApp::setup()
 {
-  wMap = new WorldMap(MapType::DESERT);
+  wMap = new WorldMap(MapType::FOREST, 8);
 }
 
 void ofApp::update()

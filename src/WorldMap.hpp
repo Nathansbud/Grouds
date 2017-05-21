@@ -13,6 +13,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <map>
 #include "ofMain.h"
 #include "Tile.hpp"
 
@@ -29,24 +30,31 @@ class WorldMap
 {
   public:
 	WorldMap();
-	WorldMap(MapType mapType);
+	WorldMap(MapType mapType, int size);
 	~WorldMap();
 	void Draw();
 	void Update();
 	MapType CurrentLevel();
+	Tile* at(int tileID) {return pair[tileID];}
+	
+	int GetMapSize() {return _mapSize;}
 
   private:
-	void LoadMap(MapType level);
+	void LoadMap(MapType level, int size);
 	std::ifstream gameMap;
 	std::string line;
 	static const int ROW_WIDTH = 8;
 	static const int ROW_HEIGHT = 8;
-//	int tiles[ROW_WIDTH][ROW_HEIGHT];
+	
+	int rowW, rowH;
+		
 	Tile* tileMap[ROW_WIDTH][ROW_HEIGHT];
 	void Parse();
 	void SetupTileMap();
+	int _mapSize;
 	MapType _mapType;
 	TileType _tileType;
+	std::map<int, Tile*> pair;
 };
 
 

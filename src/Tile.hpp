@@ -18,7 +18,7 @@ enum class TileType
   TREE = 1,
   SAND = 2,
   WATER = 3,
-  PLAYER = 9,
+  HUMAN = 9,
   INVALID
 };
 
@@ -34,14 +34,15 @@ class Tile
 	void Draw();
 	
 	void SetPos(float posX, float posY);
+	void SetType(TileType type);
 	
 	ofVec2f GetSeedPos() {return _seedPos;}
+	ofVec2f GetPos() {return _pos;}
 	ofVec2f GetSize() {return _size;}
 	
   
   private:
   
-	void SetType(TileType type);
 	int _id;
 	ofVec2f _seedPos;
 	ofVec2f _size;

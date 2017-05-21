@@ -14,9 +14,13 @@ WorldMap::WorldMap()
   std::cout << "kill me" << std::endl;
 }
 
-WorldMap::WorldMap(MapType mapType)
+WorldMap::WorldMap(MapType mapType, int size)
 {
-  LoadMap(mapType);
+  rowW = ROW_WIDTH;
+  std::cout << rowW << std::endl;
+  rowH = ROW_HEIGHT;
+  _mapSize = size;
+  LoadMap(mapType, size);
 }
 
 WorldMap::~WorldMap()
@@ -26,9 +30,9 @@ WorldMap::~WorldMap()
 
 void WorldMap::Draw()
 {
- for(int i = 0; i < 8; i++)
+  for(int i = 0; i < rowW; i++)
   {
-	for(int j = 0; j < 8; j++)
+	for(int j = 0; j < rowH; j++)
 	{
 	  tileMap[i][j]->Draw();
 	}
@@ -40,23 +44,33 @@ void WorldMap::Update()
 
 }
 
-void WorldMap::LoadMap(MapType mapType)
+void WorldMap::LoadMap(MapType mapType, int size)
 {
   std::string currentStage;
   
   switch(mapType)
   {
 	case MapType::FOREST:
-	  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/forest.txt");
+	  {
+		if(size <= 8) gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/8x8 Maps/forest.txt");
+		else if(size > 8 && size <= 16) gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/16x16 Maps/forest.txt");
+	  }
 	  break;
 	case MapType::DESERT:
-	  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/desert.txt");
+	  {
+		if(size <= 8) gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/8x8 Maps/desert.txt");
+		else if(size > 8 && size <= 16) gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/16x16 Maps/desert.txt");
+	  }
 	  break;
 	case MapType::OCEAN:
-	  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/ocean.txt");
+	  {
+		if(size <= 8) gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/8x8 Maps/ocean.txt");
+		else if(size > 8 && size <= 16) gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/16x16 Maps/ocean.txt");
+	  }
 	  break;
 	case MapType::INVALID:
-	  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/template.txt");
+	  gameMap.open("/Users/zachamiton/GitHub/Testing Grouds/bin/data/temp8.txt");
+	  break;
   }
   
   int id = 0;
@@ -64,17 +78,13 @@ void WorldMap::LoadMap(MapType mapType)
   if (!gameMap) std::cout << "Map failed to initialize" << std::endl;
   else std::cout << "Everything went according to plan, boss!" << std::endl;
   
-  int i = -1;
+  int iter = -1;
   
   while(std::getline(gameMap, line))
   {
-	i++;
-	for(int j = 0; j < ROW_HEIGHT; j++)
+	iter++;
+	for(int j = 0; j < rowH; j++)
 	{
-	  
-//	  tiles[i][j] = line[j];
-//	  std::cout << tiles[i][j] << std::endl;
-	  
 	  switch(line[j])
 	  {
 		case 48:
@@ -90,15 +100,16 @@ void WorldMap::LoadMap(MapType mapType)
 		  _tileType = TileType::WATER;
 		  break;
 		case 58:
-		  _tileType = TileType::PLAYER;
+		  _tileType = TileType::HUMAN;
 		  break;
 		default:
 		  _tileType = TileType::INVALID;
 		  break;
 	  }
 	  
-	  tileMap[i][j] = new Tile(_tileType, id); //(TileType)tiles[i][j];
-	  tileMap[i][j]->SetPos(tileMap[i][j]->GetSeedPos().x + (tileMap[i][j]->GetSize().x * j), tileMap[i][j]->GetSeedPos().y + (tileMap[i][j]->GetSize().y * i));
+	  tileMap[iter][j] = new Tile(_tileType, id);
+	  pair.emplace(id, tileMap[iter][j]);
+	  tileMap[iter][j]->SetPos(tileMap[iter][j]->GetSeedPos().x + (tileMap[iter][j]->GetSize().x * j), tileMap[iter][j]->GetSeedPos().y + (tileMap[iter][j]->GetSize().y * iter));
 	  id++;
 	}
 	

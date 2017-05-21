@@ -7,6 +7,7 @@
 //
 
 #include "Tile.hpp"
+#include <stdexcept>
 
 Tile::Tile() //Needs a default constructor I believe
 {
@@ -16,10 +17,10 @@ Tile::Tile() //Needs a default constructor I believe
 Tile::Tile(TileType type, int id)
 {
   _seedPos = ofVec2f(ofGetWidth()/14.4, ofGetHeight()/9);
-  SetPos(_seedPos.x, _seedPos.y);
+  SetPos(_seedPos.x, _seedPos.y); //Maybe find a better way of doing this?
   SetType(type);
-  _size = ofVec2f(ofGetWidth()*0.0555555555, ofGetHeight()*0.0888888888);
-  id = _id; //0 = Normal, 1 = Tree, 2 = Water, 9 = Human???
+  _size = ofVec2f(ofGetWidth()*0.0555555555, ofGetWidth()*0.0555555555); //Change this to be variable later @ 8 vs 16 size maps
+   _id = id;
 }
 
 Tile::~Tile()
@@ -32,7 +33,7 @@ void Tile::Draw()
   ofFill();
   switch(GetType())
   {
-	case TileType::GROUND:
+  	case TileType::GROUND:
 	  ofSetColor(76, 70, 50);
 	  break;
 	case TileType::TREE:
@@ -42,12 +43,13 @@ void Tile::Draw()
 	  ofSetColor(237, 201, 175);
 	  break;
 	case TileType::WATER:
-	  ofSetColor(0, 255, 255);
+	  ofSetColor(0, 0, 225); //Dark Blue
 	  break;
-	case TileType::PLAYER:
+	case TileType::HUMAN:
 	  ofSetColor(0);
 	  break;
 	case TileType::INVALID:
+	  throw std::invalid_argument("Received Invalid Tile");
 	  break;
 	
   }
