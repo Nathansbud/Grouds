@@ -13,7 +13,6 @@
 		BF057CB71EC9FE7D009A7929 /* Cat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CAA1EC9FE7D009A7929 /* Cat.cpp */; };
 		BF057CB81EC9FE7D009A7929 /* Human.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CAC1EC9FE7D009A7929 /* Human.cpp */; };
 		BF057CB91EC9FE7D009A7929 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CAE1EC9FE7D009A7929 /* main.cpp */; };
-		BF057CBA1EC9FE7D009A7929 /* Mammal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CAF1EC9FE7D009A7929 /* Mammal.cpp */; };
 		BF057CBB1EC9FE7D009A7929 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CB11EC9FE7D009A7929 /* ofApp.cpp */; };
 		BF057CD31ECA1329009A7929 /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CD11ECA1329009A7929 /* WorldMap.cpp */; };
 		BF56B5E11ECB6368001EEBE9 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF56B5DF1ECB6368001EEBE9 /* Tile.cpp */; };
@@ -61,8 +60,6 @@
 		BF057CAC1EC9FE7D009A7929 /* Human.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Human.cpp; sourceTree = "<group>"; };
 		BF057CAD1EC9FE7D009A7929 /* Human.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Human.hpp; sourceTree = "<group>"; };
 		BF057CAE1EC9FE7D009A7929 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		BF057CAF1EC9FE7D009A7929 /* Mammal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mammal.cpp; sourceTree = "<group>"; };
-		BF057CB01EC9FE7D009A7929 /* Mammal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Mammal.hpp; sourceTree = "<group>"; };
 		BF057CB11EC9FE7D009A7929 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
 		BF057CB21EC9FE7D009A7929 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; wrapsLines = 0; };
 		BF057CD11ECA1329009A7929 /* WorldMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldMap.cpp; sourceTree = "<group>"; wrapsLines = 0; };
@@ -141,8 +138,6 @@
 				BF057CAB1EC9FE7D009A7929 /* Cat.hpp */,
 				BF057CAC1EC9FE7D009A7929 /* Human.cpp */,
 				BF057CAD1EC9FE7D009A7929 /* Human.hpp */,
-				BF057CAF1EC9FE7D009A7929 /* Mammal.cpp */,
-				BF057CB01EC9FE7D009A7929 /* Mammal.hpp */,
 				BF057CA81EC9FE7D009A7929 /* BaseAI.cpp */,
 				BF057CA91EC9FE7D009A7929 /* BaseAI.hpp */,
 			);
@@ -251,7 +246,6 @@
 				BF057CB91EC9FE7D009A7929 /* main.cpp in Sources */,
 				BF057CD31ECA1329009A7929 /* WorldMap.cpp in Sources */,
 				BF057CB41EC9FE7D009A7929 /* Animal.cpp in Sources */,
-				BF057CBA1EC9FE7D009A7929 /* Mammal.cpp in Sources */,
 				BF057CB61EC9FE7D009A7929 /* BaseAI.cpp in Sources */,
 				BF057CB81EC9FE7D009A7929 /* Human.cpp in Sources */,
 				BF56B5E11ECB6368001EEBE9 /* Tile.cpp in Sources */,

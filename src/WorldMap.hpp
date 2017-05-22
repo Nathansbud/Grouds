@@ -34,8 +34,12 @@ class WorldMap
 	~WorldMap();
 	void Draw();
 	void Update();
+	
+	void SpawnEntity(int num, TileType type);
+	void SpawnEntity(TileType type, int index);
+	
 	MapType CurrentLevel();
-	Tile* at(int tileID) {return pair[tileID];}
+	Tile* at(int tileID) {return idMap[tileID];}
 	
 	int GetMapSize() {return _mapSize;}
 
@@ -54,7 +58,7 @@ class WorldMap
 	int _mapSize;
 	MapType _mapType;
 	TileType _tileType;
-	std::map<int, Tile*> pair;
+	std::map<int, Tile*> idMap;
 };
 
 

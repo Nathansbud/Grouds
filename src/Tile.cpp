@@ -7,7 +7,6 @@
 //
 
 #include "Tile.hpp"
-#include <stdexcept>
 
 Tile::Tile() //Needs a default constructor I believe
 {
@@ -55,6 +54,25 @@ void Tile::Draw()
   }
   ofDrawRectangle(_pos, _size.x, _size.y);
   ofNoFill();
+}
+
+bool Tile::isOccupied()
+{
+  switch(_type)
+  {
+	case TileType::GROUND:
+	case TileType::SAND:
+	  return false;
+	  break;
+	case TileType::TREE:
+	case TileType::HUMAN:
+	case TileType::WATER:
+	  return true;
+	  break;
+	case TileType::INVALID:
+	  throw std::invalid_argument("Received Invalid Tile");
+	  throw; 
+  }
 }
 
 void Tile::SetPos(float posX, float posY)

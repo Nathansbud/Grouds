@@ -10,9 +10,9 @@
 #define Cat_hpp
 
 #include <iostream>
-#include "Mammal.hpp"
+#include "Animal.hpp"
 
-class Cat : public Mammal
+class Cat : public Animal
 {
   Cat();
   ~Cat();

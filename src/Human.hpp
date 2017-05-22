@@ -11,9 +11,9 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "Mammal.hpp"
+#include "Animal.hpp"
 
-class Human : public Mammal
+class Human : public Animal
 {
   public:
 	Human();
