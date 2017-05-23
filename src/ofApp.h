@@ -1,13 +1,11 @@
 #pragma once
 
-//#include "ofMain.h"
-//#include "Human.hpp"
-//#include "Mammal.hpp"
-//#include "Cat.hpp"
-//#include "Animal.hpp"
-//#include "BaseAI.hpp"
-//#include "Bacteria.hpp"
+
+#include "ofMain.h"
 #include "WorldMap.hpp"
+#include "Human.hpp"
+#include "HUD.hpp"
+
 class ofApp : public ofBaseApp
 {
 	public:
@@ -16,6 +14,7 @@ class ofApp : public ofBaseApp
 		void draw();
   
 		WorldMap* wMap;
+		HUD* hud;
   private:
 };
 

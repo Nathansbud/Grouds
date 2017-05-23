@@ -19,6 +19,7 @@ WorldMap::WorldMap(MapType mapType, int size)
   rowW = ROW_WIDTH;
   rowH = ROW_HEIGHT;
   _mapSize = size;
+  _isInit = true;
   LoadMap(mapType, size);
 }
 
@@ -38,19 +39,10 @@ void WorldMap::Draw()
   }
 }
 
-void WorldMap::Update()
+void WorldMap::Update(int mouseX, int mouseY)
 {
-  
+  CheckMoused(mouseX, mouseY);
 }
-
-//void SpawnEntity(TileType t, int num)
-//{
-//  for(int i = 0; i < num; i++)
-//  {
-//	int tile = (int)ofRandom(0, 64);
-//	at(tile)->SetType(TileType::HUMAN);
-//  }
-//}
 
 void WorldMap::LoadMap(MapType mapType, int size)
 {
@@ -134,6 +126,20 @@ void WorldMap::SpawnEntity(TileType t, int index)
   at(index)->SetType(t);
 }
 
+
+Tile* WorldMap::CheckMoused(int mouseX, int mouseY)
+{
+  for(int i = 0; i < MAP_SIZE; i++)
+  {
+	if(at(i)->isMousedOver(mouseX, mouseY))
+	{
+	  _mousedTile = at(i);
+	  _tileMoused = true;
+	  return at(i);
+	} else _tileMoused = false;
+  }
+}
+
 void WorldMap::SpawnEntity(int num, TileType t) //Appears to work. Double check later.
 {
   vector<int> indexes;
@@ -159,13 +165,21 @@ void WorldMap::SpawnEntity(int num, TileType t) //Appears to work. Double check 
   }
 }
 
-
-void WorldMap::Parse()
+std::string WorldMap::GetMapName()
 {
-  
-}
-
-MapType WorldMap::CurrentLevel()
-{
-  return _mapType;
+  switch(GetMap())
+  {
+	case MapType::FOREST:
+	  return "Forest";
+	  break;
+	case MapType::OCEAN:
+	  return "Ocean";
+	  break;
+	case MapType::DESERT:
+	  return "Desert";
+	  break;
+	case MapType::INVALID:
+	  return "Invalid";
+	  break;
+  }
 }

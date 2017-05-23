@@ -15,7 +15,7 @@ Tile::Tile() //Needs a default constructor I believe
 
 Tile::Tile(TileType type, int id)
 {
-  _seedPos = ofVec2f(ofGetWidth()/14.4, ofGetHeight()/9);
+  _seedPos = ofVec2f(ofGetWidth()/14.4*4, ofGetHeight()/9);
   SetPos(_seedPos.x, _seedPos.y); //Maybe find a better way of doing this?
   SetType(type);
   _size = ofVec2f(ofGetWidth()*0.0555555555, ofGetWidth()*0.0555555555); //Change this to be variable later @ 8 vs 16 size maps
@@ -25,6 +25,11 @@ Tile::Tile(TileType type, int id)
 Tile::~Tile()
 {
 
+}
+
+void Tile::Update(int mouseX, int mouseY)
+{
+  isMousedOver(mouseX, mouseY);
 }
 
 void Tile::Draw()
@@ -71,8 +76,16 @@ bool Tile::isOccupied()
 	  break;
 	case TileType::INVALID:
 	  throw std::invalid_argument("Received Invalid Tile");
-	  throw; 
+	  break;
   }
+}
+
+bool Tile::isMousedOver(int mouseX, int mouseY)
+{
+  if(mouseX < _pos.x + _size.x && mouseX > _pos.x && mouseY > _pos.y && mouseY < _pos.y + _size.y)
+  {
+	return true;
+  } else return false;
 }
 
 void Tile::SetPos(float posX, float posY)
@@ -83,6 +96,27 @@ void Tile::SetPos(float posX, float posY)
 void Tile::SetType(TileType type)
 {
   _type = type;
+  switch(type)
+  {
+	case TileType::GROUND:
+	  _typeS = "Ground";
+	  break;
+	case TileType::WATER:
+	  _typeS = "Water";
+	  break;
+	case TileType::SAND:
+	  _typeS = "Sand";
+	  break;
+	case TileType::HUMAN:
+	  _typeS = "Human";
+	  break;
+	case TileType::TREE:
+	  _typeS = "Tree";
+	  break;
+	case TileType::INVALID:
+	  _typeS = "Invalid";
+	  break;
+  }
 }
 
 

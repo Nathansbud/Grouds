@@ -16,6 +16,7 @@
 		BF057CBB1EC9FE7D009A7929 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CB11EC9FE7D009A7929 /* ofApp.cpp */; };
 		BF057CD31ECA1329009A7929 /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF057CD11ECA1329009A7929 /* WorldMap.cpp */; };
 		BF56B5E11ECB6368001EEBE9 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF56B5DF1ECB6368001EEBE9 /* Tile.cpp */; };
+		BFB9DCE01ED368BA00C4C8CE /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB9DCDE1ED368BA00C4C8CE /* HUD.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,8 @@
 		BF057CD21ECA1329009A7929 /* WorldMap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WorldMap.hpp; sourceTree = "<group>"; };
 		BF56B5DF1ECB6368001EEBE9 /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
 		BF56B5E01ECB6368001EEBE9 /* Tile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tile.hpp; sourceTree = "<group>"; };
+		BFB9DCDE1ED368BA00C4C8CE /* HUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HUD.cpp; sourceTree = "<group>"; };
+		BFB9DCDF1ED368BA00C4C8CE /* HUD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HUD.hpp; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../Documents/openFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* Testing GroudsDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Testing GroudsDebug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				BF057CAD1EC9FE7D009A7929 /* Human.hpp */,
 				BF057CA81EC9FE7D009A7929 /* BaseAI.cpp */,
 				BF057CA91EC9FE7D009A7929 /* BaseAI.hpp */,
+				BFB9DCDE1ED368BA00C4C8CE /* HUD.cpp */,
+				BFB9DCDF1ED368BA00C4C8CE /* HUD.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -249,6 +254,7 @@
 				BF057CB61EC9FE7D009A7929 /* BaseAI.cpp in Sources */,
 				BF057CB81EC9FE7D009A7929 /* Human.cpp in Sources */,
 				BF56B5E11ECB6368001EEBE9 /* Tile.cpp in Sources */,
+				BFB9DCE01ED368BA00C4C8CE /* HUD.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

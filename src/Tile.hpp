@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdexcept>
+#include <map>
 #include "ofMain.h"
 
 enum class TileType
@@ -30,17 +31,22 @@ class Tile
 	Tile(TileType type, int id);
 	~Tile();
 	TileType GetType() {return _type;}
+	std::string GetTypeS() {return _typeS;}
+	
 	int GetID() {return _id;}
 	
+	void Update(int mouseX, int mouseY);
 	void Draw();
 	
 	void SetPos(float posX, float posY);
 	void SetType(TileType type);
 	
+	
 	ofVec2f GetSeedPos() {return _seedPos;}
 	ofVec2f GetPos() {return _pos;}
 	ofVec2f GetSize() {return _size;}
 	bool isOccupied();
+	bool isMousedOver(int mouseX, int mouseY);
 	
   
   private:
@@ -49,6 +55,7 @@ class Tile
 	ofVec2f _size;
 	ofVec2f _pos;
 	TileType _type;
+	std::string _typeS;
 	
 
 	
