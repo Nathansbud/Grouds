@@ -1,4 +1,4 @@
-//
+  //
 //  Tile.hpp
 //  Testing Grouds
 //
@@ -20,6 +20,7 @@ enum class TileType
   TREE = 1,
   SAND = 2, //Ground Tile
   WATER = 3,
+  ROCK = 4,
   HUMAN = 9,
   INVALID
 };
@@ -47,7 +48,7 @@ class Tile
 	ofVec2f GetSize() {return _size;}
 	bool isOccupied();
 	bool isMousedOver(int mouseX, int mouseY);
-	
+	bool _isSelected;
   
   private:
 	int _id;

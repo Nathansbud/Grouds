@@ -25,7 +25,7 @@ HUD::~HUD()
 
 void HUD::Update()
 {
-  GetData(_map->isMoused());
+  GetData(_map->GetMoused());
 }
 
 void HUD::Draw()
@@ -37,8 +37,14 @@ void HUD::GetInfo()
 {
   ofSetColor(0);
   ofDrawBitmapString(_name, ofGetWidth()/2, ofGetHeight()/10); //Has a strange tendency to output what appears to be a random string of characters, will investigate this further...or fails to show entirely? Size works as intended, as do id & _type. Not sure why this one happens.
+ 
+  
+  std::string _idS = to_string(_id);
+  
   if(_map->_tileMoused)
   {
+	
+
 	ofDrawBitmapString("Tile #" + to_string(_id + 1), _rightPos.x, _rightPos.y);
 	ofDrawBitmapString(_type, _rightPos.x, _rightPos.y + ofGetHeight()/30);
   }
@@ -58,8 +64,8 @@ void HUD::GetData(Tile* tile)
   
   if(_map->_tileMoused)
   {
-	_id = _map->isMoused()->GetID();
-	_type = _map->isMoused()->GetTypeS();
+	_id = _map->GetMoused()->GetID();
+	_type = _map->GetMoused()->GetTypeS();
   }
 }
 

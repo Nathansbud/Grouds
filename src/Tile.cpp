@@ -44,13 +44,16 @@ void Tile::Draw()
 	  ofSetColor(0, 100, 0);
 	  break;
 	case TileType::SAND:
-	  ofSetColor(237, 201, 175);
+	  ofSetColor(205, 165, 32);
 	  break;
 	case TileType::WATER:
 	  ofSetColor(0, 0, 225); //Dark Blue
 	  break;
+	case TileType::ROCK:
+	  ofSetColor(50);
+	  break;
 	case TileType::HUMAN:
-	  ofSetColor(0);
+	  ofSetColor(240, 213, 190);
 	  break;
 	case TileType::INVALID:
 	  throw std::invalid_argument("Received Invalid Tile");
@@ -72,6 +75,7 @@ bool Tile::isOccupied()
 	case TileType::TREE:
 	case TileType::HUMAN:
 	case TileType::WATER:
+	case TileType::ROCK:
 	  return true;
 	  break;
 	case TileType::INVALID:
@@ -112,6 +116,9 @@ void Tile::SetType(TileType type)
 	  break;
 	case TileType::TREE:
 	  _typeS = "Tree";
+	  break;
+	case TileType::ROCK:
+	  _typeS = "Rock";
 	  break;
 	case TileType::INVALID:
 	  _typeS = "Invalid";

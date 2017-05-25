@@ -12,6 +12,8 @@ class ofApp : public ofBaseApp
 		void setup();
 		void update();
 		void draw();
+		void keyPressed(int key);
+		void mousePressed(int x, int y, int mouse);
   
 		WorldMap* wMap;
 		HUD* hud;

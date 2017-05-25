@@ -46,7 +46,7 @@ void WorldMap::Update(int mouseX, int mouseY)
 
 void WorldMap::LoadMap(MapType mapType, int size)
 {
-  std::string currentStage;
+  _mapType = mapType;
   
   switch(mapType)
   {
@@ -85,8 +85,9 @@ void WorldMap::LoadMap(MapType mapType, int size)
 	iter++;
 	for(int j = 0; j < rowH; j++)
 	{
-	  switch(line[j])
+	  switch(line[j]) //STRONG NOTE YOU CAN LOAD IN ASCII LETTERS!!!!!!!
 	  {
+	  
 		case 48:
 		  _tileType = TileType::GROUND;
 		  break;
@@ -99,7 +100,10 @@ void WorldMap::LoadMap(MapType mapType, int size)
 		case 51:
 		  _tileType = TileType::WATER;
 		  break;
-		case 58:
+		case 52:
+		  _tileType = TileType::ROCK;
+		  break;
+		case 57:
 		  _tileType = TileType::HUMAN;
 		  break;
 		default:
@@ -182,4 +186,21 @@ std::string WorldMap::GetMapName()
 	  return "Invalid";
 	  break;
   }
+}
+
+void WorldMap::MoveTile(int t1, int t2)
+{
+  TileType temp[] = {at(t1)->GetType(), at(t2)->GetType()};
+  at(t1)->SetType(temp[1]);
+  at(t2)->SetType(temp[0]);
+}
+
+void WorldMap::SetSelected(Tile* t)
+{
+  _selectedTile = t;
+}
+
+void WorldMap::Save()
+{
+
 }

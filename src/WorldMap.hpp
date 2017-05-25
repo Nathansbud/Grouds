@@ -21,8 +21,8 @@
 enum class MapType
 {
   FOREST,
-  DESERT,
   OCEAN,
+  DESERT,
   INVALID
 };
 
@@ -44,12 +44,18 @@ class WorldMap
 	
 	Tile* at(int tileID) {return idMap[tileID];}
 	Tile* CheckMoused(int mouseX, int mouseY);
-	Tile* isMoused() {return _mousedTile;}
+	Tile* GetMoused() {return _mousedTile;}
+	Tile* GetSelected() {return _selectedTile;}
+	
+	void SetSelected(Tile* t);
+	void MoveTile(int t1, int t2);
   
 	int GetMapSize() {return MAP_SIZE;}
 	
 	bool _isInit;
 	bool _tileMoused;
+	
+	void Save();
 
   private:
 	void LoadMap(MapType level, int size);
@@ -63,6 +69,7 @@ class WorldMap
 		
 	Tile* tileMap[ROW_WIDTH][ROW_HEIGHT];
 	Tile* _mousedTile;
+	Tile* _selectedTile;
 	void Parse();
 	void SetupTileMap();
 	int _mapSize;
