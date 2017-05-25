@@ -30,6 +30,7 @@ class Tile
   public:
 	Tile(); //Default tile
 	Tile(TileType type, int id);
+	Tile(const Tile &tile);
 	~Tile();
 	TileType GetType() {return _type;}
 	std::string GetTypeS() {return _typeS;}
@@ -49,7 +50,9 @@ class Tile
 	bool isOccupied();
 	bool isMousedOver(int mouseX, int mouseY);
 	bool _isSelected;
-  
+	
+	Tile& operator=(const Tile& obj);
+	
   private:
 	int _id;
 	ofVec2f _seedPos;

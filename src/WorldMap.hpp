@@ -14,6 +14,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <algorithm>
 #include "ofMain.h"
 #include "Tile.hpp"
 

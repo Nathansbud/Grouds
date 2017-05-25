@@ -23,11 +23,16 @@ void ofApp::draw()
 
 void ofApp::keyPressed(int key)
 {
-//  wMap->MoveTile(3, 8);
+  tile = new Tile(TileType::WATER, 8);
+  tile2 = new Tile(TileType::GROUND, 2);
+  
+//  *wMap->at(2) = *tile;
+
+  cout << wMap->at(2)->GetTypeS() << tile->GetID() << endl;
 }
 
 void ofApp::mousePressed(int x, int y, int mouse)
 {
    wMap->SetSelected(wMap->GetMoused());
-   if(wMap->TileSelected());
+   cout << wMap->at(wMap->GetSelected()->GetID())->GetID() << endl;
 }

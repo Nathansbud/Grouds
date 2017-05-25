@@ -22,6 +22,17 @@ Tile::Tile(TileType type, int id)
    _id = id;
 }
 
+Tile::Tile(const Tile &obj)
+{
+  _type = obj._type;
+}
+
+Tile& Tile::operator=(const Tile& obj)
+{
+  return *this;
+}
+
+
 Tile::~Tile()
 {
 

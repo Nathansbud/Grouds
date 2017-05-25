@@ -190,9 +190,10 @@ std::string WorldMap::GetMapName()
 
 void WorldMap::MoveTile(int t1, int t2)
 {
-  TileType temp[] = {at(t1)->GetType(), at(t2)->GetType()};
-  at(t1)->SetType(temp[1]);
-  at(t2)->SetType(temp[0]);
+  int ids[2] = {at(t1)->GetID(), at(t2)->GetID()};
+  
+//  at(t1)->SetType(temp[1]);
+//  at(t2)->SetType(temp[0]);
 }
 
 void WorldMap::SetSelected(Tile* t)

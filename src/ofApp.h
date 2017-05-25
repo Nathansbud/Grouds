@@ -17,6 +17,8 @@ class ofApp : public ofBaseApp
   
 		WorldMap* wMap;
 		HUD* hud;
+		Tile* tile;
+		Tile* tile2;
   private:
 };
 
