@@ -7,7 +7,6 @@
 //
 
 #include "WorldMap.hpp"
-#include <string>
 
 WorldMap::WorldMap()
 {
@@ -111,8 +110,23 @@ void WorldMap::LoadMap(MapType mapType, int size)
 		  break;
 	  }
 	  
-	  tileMap[iter][j] = new Tile(_tileType, id);
-	  idMap.emplace(id, tileMap[iter][j]);
+	  switch(_tileType)
+	  {
+		case TileType::HUMAN:
+		  tileMap[iter][j] = new THuman(_tileType, id);
+		  break;
+		case TileType::ROCK:
+		  tileMap[iter][j] = new TRock(_tileType, id);
+		  break;
+		case TileType::TREE:
+		  tileMap[iter][j] = new TTree(_tileType, id);
+		  break;
+		default:
+		  tileMap[iter][j] = new Tile(_tileType, id);
+		  break;
+	  }
+	  
+	  _idMap.emplace(id, tileMap[iter][j]);
 	  tileMap[iter][j]->SetPos(tileMap[iter][j]->GetSeedPos().x + (tileMap[iter][j]->GetSize().x * j), tileMap[iter][j]->GetSeedPos().y + (tileMap[iter][j]->GetSize().y * iter));
 	  id++;
 	  
@@ -169,24 +183,6 @@ void WorldMap::SpawnEntity(int num, TileType t) //Appears to work. Double check 
   }
 }
 
-std::string WorldMap::GetMapName()
-{
-  switch(GetMap())
-  {
-	case MapType::FOREST:
-	  return "Forest";
-	  break;
-	case MapType::OCEAN:
-	  return "Ocean";
-	  break;
-	case MapType::DESERT:
-	  return "Desert";
-	  break;
-	case MapType::INVALID:
-	  return "Invalid";
-	  break;
-  }
-}
 
 void WorldMap::MoveTile(int t1, int t2)
 {

@@ -10,16 +10,17 @@
 
 Tile::Tile() //Needs a default constructor I believe
 {
-
+  
 }
 
 Tile::Tile(TileType type, int id)
 {
   _seedPos = ofVec2f(ofGetWidth()/14.4*4, ofGetHeight()/9);
   SetPos(_seedPos.x, _seedPos.y); //Maybe find a better way of doing this?
-  SetType(type);
+  _type = type;
   _size = ofVec2f(ofGetWidth()*0.0555555555, ofGetWidth()*0.0555555555); //Change this to be variable later @ 8 vs 16 size maps
-   _id = id;
+  _id = id;
+  SetData();
 }
 
 Tile::Tile(const Tile &obj)
@@ -29,13 +30,24 @@ Tile::Tile(const Tile &obj)
 
 Tile& Tile::operator=(const Tile& obj)
 {
-  return *this;
+  this->_type = obj._type;
+  this->_pos = obj._pos;
 }
-
 
 Tile::~Tile()
 {
 
+}
+
+void Tile::SetData()
+{
+  data.push_back(to_string(GetID()));
+  data.push_back(GetTypeS());
+}
+
+std::string Tile::GetData(int index)
+{
+  return data.at(index);
 }
 
 void Tile::Update(int mouseX, int mouseY)
@@ -63,6 +75,9 @@ void Tile::Draw()
 	case TileType::ROCK:
 	  ofSetColor(50);
 	  break;
+	case TileType::STRUCTURE:
+	  ofSetColor(133, 94, 66);
+	  break;
 	case TileType::HUMAN:
 	  ofSetColor(240, 213, 190);
 	  break;
@@ -83,15 +98,11 @@ bool Tile::isOccupied()
 	case TileType::SAND:
 	  return false;
 	  break;
-	case TileType::TREE:
-	case TileType::HUMAN:
-	case TileType::WATER:
-	case TileType::ROCK:
-	  return true;
-	  break;
 	case TileType::INVALID:
 	  throw std::invalid_argument("Received Invalid Tile");
 	  break;
+	default:
+	  return true;
   }
 }
 
@@ -103,38 +114,9 @@ bool Tile::isMousedOver(int mouseX, int mouseY)
   } else return false;
 }
 
-void Tile::SetPos(float posX, float posY)
-{
-  _pos = ofVec2f(posX, posY);
-}
-
 void Tile::SetType(TileType type)
 {
   _type = type;
-  switch(type)
-  {
-	case TileType::GROUND:
-	  _typeS = "Ground";
-	  break;
-	case TileType::WATER:
-	  _typeS = "Water";
-	  break;
-	case TileType::SAND:
-	  _typeS = "Sand";
-	  break;
-	case TileType::HUMAN:
-	  _typeS = "Human";
-	  break;
-	case TileType::TREE:
-	  _typeS = "Tree";
-	  break;
-	case TileType::ROCK:
-	  _typeS = "Rock";
-	  break;
-	case TileType::INVALID:
-	  _typeS = "Invalid";
-	  break;
-  }
 }
 
 

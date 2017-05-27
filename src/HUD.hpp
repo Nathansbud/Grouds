@@ -9,8 +9,6 @@
 #ifndef HUD_hpp
 #define HUD_hpp
 
-#include <stdio.h>
-#include <string>
 #include <math.h>
 #include "WorldMap.hpp"
 
@@ -24,13 +22,23 @@ class HUD
 	void GetData(Tile* tile);
 	void Draw();
 	void Update();
-	
+//	void CastData(Tile* tile);
+		
   private:
 	WorldMap* _map;
 	std::string _name;
 	std::string _type;
 	int _size;
 	int _id;
+	
+	Tile* _moused;
+	Tile* _selected;
+	
+//	TTree *tree;
+//	TRock *rock;
+//	THuman *human;
+	
+	
   
 	
 	ofVec2f _rightPos;

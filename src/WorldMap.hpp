@@ -17,6 +17,9 @@
 #include <algorithm>
 #include "ofMain.h"
 #include "Tile.hpp"
+#include "THuman.hpp"
+#include "TRock.hpp"
+#include "TTree.hpp"
 
 
 enum class MapType
@@ -41,9 +44,9 @@ class WorldMap
 	void SpawnEntity(TileType type, int index);
 	
 	MapType GetMap() {return _mapType;}
-	std::string GetMapName();
+	std::string GetMapName() {return _mapName[_mapType];}
 	
-	Tile* at(int tileID) {return idMap[tileID];}
+	Tile* at(int tileID) {return _idMap[tileID];}
 	Tile* CheckMoused(int mouseX, int mouseY);
 	Tile* GetMoused() {return _mousedTile;}
 	Tile* GetSelected() {return _selectedTile;}
@@ -55,6 +58,7 @@ class WorldMap
 	
 	bool _isInit;
 	bool _tileMoused;
+	bool _tileSelected;
 	
 	void Save();
 
@@ -76,7 +80,11 @@ class WorldMap
 	int _mapSize;
 	MapType _mapType;
 	TileType _tileType;
-	std::map<int, Tile*> idMap;
+	std::map<int, Tile*> _idMap;
+	std::map<MapType, std::string> _mapName = {{MapType::FOREST, "Forest"},
+												{MapType::OCEAN, "Ocean"},
+												{MapType::DESERT, "Desert"},
+												{MapType::INVALID, "Invalid"}};
 };
 
 

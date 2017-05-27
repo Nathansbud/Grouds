@@ -3,7 +3,6 @@
 
 #include "ofMain.h"
 #include "WorldMap.hpp"
-#include "Human.hpp"
 #include "HUD.hpp"
 
 class ofApp : public ofBaseApp
