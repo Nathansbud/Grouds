@@ -21,10 +21,11 @@ void ofApp::draw()
 
 void ofApp::keyPressed(int key)
 {
-  
+  cout << wMap->at(14)->GetTypeS() << endl;
 }
 
 void ofApp::mousePressed(int x, int y, int mouse)
 {
    wMap->SetSelected(wMap->GetMoused());
+   cout << wMap->GetSelected()->GetTypeS() << endl;
 }

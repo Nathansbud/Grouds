@@ -47,7 +47,7 @@ class Tile
 	int GetID() {return _id;}
 	
 	void Update(int mouseX, int mouseY);
-	void Draw();
+	virtual void Draw();
 	
 	void SetType(TileType type);
 	void SetID(int id) {_id = id;}

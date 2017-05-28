@@ -26,6 +26,7 @@ HUD::~HUD()
 void HUD::Update()
 {
   GetData(_map->GetMoused());
+  cout << _map->at(14)->GetTypeS() << endl;
 }
 
 void HUD::Draw()
@@ -38,15 +39,24 @@ void HUD::GetInfo()
   ofSetColor(0);
   ofDrawBitmapString(_name, ofGetWidth()/2, ofGetHeight()/10); //Has a strange tendency to output what appears to be a random string of characters, will investigate this further...or fails to show entirely? Size works as intended, as do id & _type. Not sure why this one happens.
  
-  
-  std::string _idS = to_string(_id + 1);
-  
   if(_map->_tileMoused)
   {
-	ofDrawBitmapString("Tile #" + _map->GetMoused()->GetData(0), _rightPos.x, _rightPos.y);
-	ofDrawBitmapString(_map->GetMoused()->GetData(1), _rightPos.x, _rightPos.y + ofGetHeight()/30);
+	ofDrawBitmapString("Moused Over:", _rightPos.x, _mElement(0));
+	ofDrawBitmapString("Tile #" + _moused->GetData(0), _rightPos.x, _mElement(1));
+	ofDrawBitmapString(_moused->GetData(1), _rightPos.x, _mElement(2));
+//	ofDrawBitmapString(
   }
   
+  if(_map->_tileSelected)
+  {
+	ofDrawBitmapString("Selected:", _rightPos.x, _sElement(0));
+	ofDrawBitmapString("Tile #" + _selected->GetData(0), _rightPos.x, _sElement(1));
+	ofDrawBitmapString("Tile Type: " + _selected->GetData(1), _rightPos.x, _sElement(2));
+	if(_selected->GetType() == TileType::SAND)
+	{
+	  ofDrawBitmapString("wat" + _selected->GetData(2), _rightPos.x, _sElement(3));
+	}
+  }
   
   
   ofDrawBitmapString("Time Elapsed: " + to_string((int)ofGetElapsedTimef()), _leftPos.x, _leftPos.y); //Time in Seconds

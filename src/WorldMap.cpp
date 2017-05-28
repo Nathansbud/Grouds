@@ -195,6 +195,7 @@ void WorldMap::MoveTile(int t1, int t2)
 void WorldMap::SetSelected(Tile* t)
 {
   _selectedTile = t;
+  _tileSelected = true;
 }
 
 void WorldMap::Save()

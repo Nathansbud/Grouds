@@ -43,6 +43,8 @@ class HUD
 	
 	ofVec2f _rightPos;
 	ofVec2f _leftPos;
+	float _sElement(int num) {return _rightPos.y + ofGetHeight()/30 * num;}
+	float _mElement(int num) {return _rightPos.y + ofGetHeight()/3 + ofGetHeight()/30 * num;}
 	
 	
 };
