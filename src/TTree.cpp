@@ -13,7 +13,7 @@ TTree::TTree(TileType type, int id)
   SetType(type);
   SetSpecies();
   SetID(id);
-  SetData();
+  InitializeData();
 }
 
 TTree::~TTree()
@@ -27,11 +27,18 @@ void TTree::SetSpecies(TreeType species)
   SetHeight();
 }
 
-void TTree::SetData()
+void TTree::InitializeData()
 {
-  data.push_back(to_string(GetID()));
-  data.push_back(GetTypeS());
-  data.push_back(GetSpeciesS());
+  AddData("Tile #" + to_string(GetID()));
+  AddData(GetTypeS());
+  AddData("Species: " + GetSpeciesS());
+}
+
+void TTree::UpdateData()
+{
+  SetData(0, "Tile #" + to_string(GetID()));
+  SetData(1, GetTypeS());
+  SetData(2, "Species " + GetSpeciesS());
 }
 
 void TTree::SetSpecies()

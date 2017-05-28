@@ -12,7 +12,7 @@ THuman::THuman(TileType type, int id)
 {
   SetType(TileType::HUMAN);
   SetID(id);
-  SetData();
+  InitializeData();
 }
 
 THuman::~THuman()
@@ -20,8 +20,14 @@ THuman::~THuman()
 
 }
 
-void THuman::SetData()
+void THuman::InitializeData()
 {
-  data.push_back(to_string(GetID()));
-  data.push_back(GetTypeS());
+  AddData("Tile #" + to_string(GetID()));
+  AddData(GetTypeS());
+}
+
+void THuman::UpdateData()
+{
+  SetData(0, "Tile #" + to_string(GetID()));
+  SetData(1, GetTypeS());
 }

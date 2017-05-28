@@ -12,7 +12,7 @@ TRock::TRock(TileType type, int id)
 {
   SetType(type);
   SetID(id);
-  SetData();
+  InitializeData();
 }
 
 TRock::~TRock()
@@ -20,11 +20,18 @@ TRock::~TRock()
   
 }
 
-void TRock::SetData()
+void TRock::InitializeData()
 {
-  data.push_back(to_string(GetID()));
-  data.push_back(GetTypeS());
-  data.push_back(GetRockS());
+  AddData("Tile #" + to_string(GetID()));
+  AddData(GetTypeS());
+  AddData("Rock Type: " + GetRockS());
+}
+
+void TRock::UpdateData()
+{
+  SetData(0, "Tile #" + to_string(GetID()));
+  SetData(1, GetTypeS());
+  SetData(2, "Rock Type: " + GetRockS());
 }
 
 void TRock::SetMineral()

@@ -30,7 +30,8 @@ class TRock : public Tile
 	TRock(TileType type, int id);
 	~TRock();
 	
-	virtual void SetData();
+	virtual void InitializeData();
+	virtual void UpdateData();
   
 	RockType GetRock() {return _rock;}
 	std::string GetRockS() {return _rockS.at(_rock);}

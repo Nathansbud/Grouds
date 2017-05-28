@@ -37,8 +37,7 @@ class Tile
 	Tile(const Tile &tile);
 	~Tile();
 	
-	virtual void SetData();
-	std::string GetData(int index);
+
 	
 	TileType GetType() {return _type;}
 	std::string GetTypeS() {return _typeS.at(_type);}
@@ -52,8 +51,10 @@ class Tile
 	void SetType(TileType type);
 	void SetID(int id) {_id = id;}
 	void SetPos(float posX, float posY) {_pos = ofVec2f(posX, posY);}
+	void SetSize(float posX, float posY) {_size = ofVec2f(posX, posY);}
 	
-	ofVec2f GetSeedPos() {return _seedPos;}
+
+	
 	ofVec2f GetPos() {return _pos;}
 	ofVec2f GetSize() {return _size;}
 	bool isOccupied();
@@ -62,15 +63,23 @@ class Tile
 	
 	Tile& operator=(const Tile& obj);
 	
-	std::vector<string> data;
+	virtual void InitializeData();
+	virtual void UpdateData();
+	
+	void AddData(std::string dat) {_data.push_back(dat);}
+	void SetData(int index, std::string dat);
+	std::string GetData(int index);
+	int GetDataSize() {return _data.size();}
+
+	
 	
   private:
 	int _id;
-	ofVec2f _seedPos;
 	ofVec2f _size;
 	ofVec2f _pos;
 	TileType _type;
 	friend class HUD;
+	std::vector<string> _data;
 	const std::map<TileType, string> _typeS = {{TileType::GROUND, "Ground"},
 												{TileType::TREE, "Tree"},
 												{TileType::SAND, "Sand"},

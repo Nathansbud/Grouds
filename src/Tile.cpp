@@ -15,12 +15,9 @@ Tile::Tile() //Needs a default constructor I believe
 
 Tile::Tile(TileType type, int id)
 {
-  _seedPos = ofVec2f(ofGetWidth()/14.4*4, ofGetHeight()/9);
-  SetPos(_seedPos.x, _seedPos.y); //Maybe find a better way of doing this?
   _type = type;
-  _size = ofVec2f(ofGetWidth()*0.0555555555, ofGetWidth()*0.0555555555); //Change this to be variable later @ 8 vs 16 size maps
   _id = id;
-  SetData();
+  InitializeData();
 }
 
 Tile::Tile(const Tile &obj)
@@ -39,19 +36,32 @@ Tile::~Tile()
 
 }
 
-void Tile::SetData()
+void Tile::InitializeData()
 {
-  data.push_back(to_string(GetID()));
-  data.push_back(GetTypeS());
+  AddData("Tile #" + to_string(GetID()));
+  AddData(GetTypeS());
+}
+
+void Tile::SetData(int index, std::string dat)
+{
+  _data.at(index) = dat;
+
+}
+
+void Tile::UpdateData()
+{
+  SetData(0, "Tile #" + to_string(GetID()));
+  SetData(1, GetTypeS());
 }
 
 std::string Tile::GetData(int index)
 {
-  return data.at(index);
+  return _data.at(index);
 }
 
 void Tile::Update(int mouseX, int mouseY)
 {
+  UpdateData();
   isMousedOver(mouseX, mouseY);
 }
 

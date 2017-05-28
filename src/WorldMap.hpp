@@ -71,7 +71,7 @@ class WorldMap
 	static const int MAP_SIZE = ROW_WIDTH * ROW_HEIGHT;
 	
 	int rowW, rowH;
-		
+	ofVec2f _seedPos;
 	Tile* tileMap[ROW_WIDTH][ROW_HEIGHT];
 	Tile* _mousedTile;
 	Tile* _selectedTile;

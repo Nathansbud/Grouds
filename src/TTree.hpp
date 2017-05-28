@@ -24,7 +24,8 @@ class TTree : public Tile
   public:
 	TTree(TileType type, int id);
 	~TTree();
-	virtual void SetData();
+	virtual void InitializeData();
+	virtual void UpdateData();
 	
 	TreeType GetSpecies() {return _species;}
 	std::string GetSpeciesS() {return _speciesS.at(_species);}

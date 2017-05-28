@@ -18,11 +18,11 @@ class HUD
 	HUD(WorldMap* map);
 	~HUD();
 	
-	void GetInfo();
-	void GetData(Tile* tile);
+	
 	void Draw();
-	void Update();
-//	void CastData(Tile* tile);
+	void Update(WorldMap* map);
+	void GetInfo();
+	void GetData(WorldMap* map);
 		
   private:
 	WorldMap* _map;
@@ -33,12 +33,6 @@ class HUD
 	
 	Tile* _moused;
 	Tile* _selected;
-	
-//	TTree *tree;
-//	TRock *rock;
-//	THuman *human;
-	
-	
   
 	
 	ofVec2f _rightPos;

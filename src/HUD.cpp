@@ -23,10 +23,9 @@ HUD::~HUD()
 
 }
 
-void HUD::Update()
+void HUD::Update(WorldMap* map)
 {
-  GetData(_map->GetMoused());
-  cout << _map->at(14)->GetTypeS() << endl;
+  GetData(map);
 }
 
 void HUD::Draw()
@@ -42,19 +41,18 @@ void HUD::GetInfo()
   if(_map->_tileMoused)
   {
 	ofDrawBitmapString("Moused Over:", _rightPos.x, _mElement(0));
-	ofDrawBitmapString("Tile #" + _moused->GetData(0), _rightPos.x, _mElement(1));
-	ofDrawBitmapString(_moused->GetData(1), _rightPos.x, _mElement(2));
-//	ofDrawBitmapString(
+	for(int i = 0; i < _moused->GetDataSize(); i++)
+	{
+	  ofDrawBitmapString(_moused->GetData(i), _rightPos.x, _mElement(i+1));
+	}
   }
   
   if(_map->_tileSelected)
   {
 	ofDrawBitmapString("Selected:", _rightPos.x, _sElement(0));
-	ofDrawBitmapString("Tile #" + _selected->GetData(0), _rightPos.x, _sElement(1));
-	ofDrawBitmapString("Tile Type: " + _selected->GetData(1), _rightPos.x, _sElement(2));
-	if(_selected->GetType() == TileType::SAND)
+	for(int i = 0; i < _selected->GetDataSize(); i++)
 	{
-	  ofDrawBitmapString("wat" + _selected->GetData(2), _rightPos.x, _sElement(3));
+	  ofDrawBitmapString(_selected->GetData(i), _rightPos.x, _sElement(i+1));
 	}
   }
   
@@ -66,9 +64,11 @@ void HUD::GetInfo()
   ofDrawBitmapString("Map Size: " + to_string(_map->GetMapSize()) + ' ' + '(' + _dim + ')', _leftPos.x, _leftPos.y + ofGetHeight()/30);
 }
 
-void HUD::GetData(Tile* tile)
+void HUD::GetData(WorldMap* map)
 {
+  _map = map;
   _name = _map->GetMapName();
+  
   
   if(_map->_tileMoused)
   {

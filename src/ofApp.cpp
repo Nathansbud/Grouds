@@ -10,7 +10,7 @@ void ofApp::setup()
 void ofApp::update()
 {
   wMap->Update(mouseX, mouseY);
-  hud->Update();
+  hud->Update(wMap);
 }
 
 void ofApp::draw()
@@ -21,11 +21,11 @@ void ofApp::draw()
 
 void ofApp::keyPressed(int key)
 {
-  cout << wMap->at(14)->GetTypeS() << endl;
+  wMap->at(3)->SetType(TileType::WATER);
 }
 
 void ofApp::mousePressed(int x, int y, int mouse)
 {
    wMap->SetSelected(wMap->GetMoused());
-   cout << wMap->GetSelected()->GetTypeS() << endl;
+   cout << wMap->GetSelected()->GetData(1) << endl;
 }

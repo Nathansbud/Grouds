@@ -46,6 +46,7 @@ void WorldMap::Update(int mouseX, int mouseY)
 void WorldMap::LoadMap(MapType mapType, int size)
 {
   _mapType = mapType;
+  _seedPos = ofVec2f(ofGetWidth()/14.4*4, ofGetHeight()/9);;
   
   switch(mapType)
   {
@@ -127,7 +128,8 @@ void WorldMap::LoadMap(MapType mapType, int size)
 	  }
 	  
 	  _idMap.emplace(id, tileMap[iter][j]);
-	  tileMap[iter][j]->SetPos(tileMap[iter][j]->GetSeedPos().x + (tileMap[iter][j]->GetSize().x * j), tileMap[iter][j]->GetSeedPos().y + (tileMap[iter][j]->GetSize().y * iter));
+	  tileMap[iter][j]->SetSize(ofGetWidth()*0.05555555555, ofGetWidth()*0.0555555555); //80x80
+	  tileMap[iter][j]->SetPos(_seedPos.x + (tileMap[iter][j]->GetSize().x * j), _seedPos.y + (tileMap[iter][j]->GetSize().y * iter));
 	  id++;
 	  
 	  

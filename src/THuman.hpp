@@ -19,7 +19,8 @@ class THuman : public Tile
 	THuman(TileType type, int id);
 	~THuman();
 	
-	virtual void SetData();
+	virtual void InitializeData();
+	virtual void UpdateData();
 
 
 	void Eat();
