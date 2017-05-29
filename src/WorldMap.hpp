@@ -20,6 +20,8 @@
 #include "THuman.hpp"
 #include "TRock.hpp"
 #include "TTree.hpp"
+#include "Entity.hpp"
+#include "EHuman.hpp"
 
 
 enum class MapType
@@ -65,6 +67,7 @@ class WorldMap
   private:
 	void LoadMap(MapType level, int size);
 	std::ifstream gameMap;
+	std::ifstream entMap;
 	std::string line;
 	static const int ROW_WIDTH = 8;
 	static const int ROW_HEIGHT = 8;
@@ -72,7 +75,10 @@ class WorldMap
 	
 	int rowW, rowH;
 	ofVec2f _seedPos;
+	
 	Tile* tileMap[ROW_WIDTH][ROW_HEIGHT];
+	Entity* entityMap[ROW_WIDTH][ROW_HEIGHT];
+	
 	Tile* _mousedTile;
 	Tile* _selectedTile;
 	void Parse();
@@ -80,6 +86,8 @@ class WorldMap
 	int _mapSize;
 	MapType _mapType;
 	TileType _tileType;
+	EntityType _entType;
+	
 	std::map<int, Tile*> _idMap;
 	std::map<MapType, std::string> _mapName = {{MapType::FOREST, "Forest"},
 												{MapType::OCEAN, "Ocean"},

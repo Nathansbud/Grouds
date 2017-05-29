@@ -16,7 +16,7 @@ Tile::Tile() //Needs a default constructor I believe
 Tile::Tile(TileType type, int id)
 {
   _type = type;
-  _id = id;
+  SetID(id);
   InitializeData();
 }
 
@@ -45,7 +45,6 @@ void Tile::InitializeData()
 void Tile::SetData(int index, std::string dat)
 {
   _data.at(index) = dat;
-
 }
 
 void Tile::UpdateData()
@@ -71,7 +70,15 @@ void Tile::Draw()
   switch(GetType())
   {
   	case TileType::GROUND:
-	  ofSetColor(76, 70, 50);
+	case TileType::INVALID:
+	  {
+		ofSetColor(76, 70, 50);
+		if(GetType() == TileType::INVALID)
+		{
+		  cout << to_string(GetID()) + " is invalid" << endl;
+		}
+	  }
+	  
 	  break;
 	case TileType::TREE:
 	  ofSetColor(0, 100, 0);
@@ -88,12 +95,9 @@ void Tile::Draw()
 	case TileType::STRUCTURE:
 	  ofSetColor(133, 94, 66);
 	  break;
-	case TileType::HUMAN:
-	  ofSetColor(240, 213, 190);
-	  break;
-	case TileType::INVALID:
-	  throw std::invalid_argument("Received Invalid Tile");
-	  break;
+//	case TileType::INVALID:
+//	  throw std::invalid_argument("Received Invalid Tile");
+//	  break;
 	
   }
   ofDrawRectangle(_pos, _size.x, _size.y);
@@ -128,6 +132,7 @@ void Tile::SetType(TileType type)
 {
   _type = type;
 }
+
 
 
 

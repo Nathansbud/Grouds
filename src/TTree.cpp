@@ -38,7 +38,7 @@ void TTree::UpdateData()
 {
   SetData(0, "Tile #" + to_string(GetID()));
   SetData(1, GetTypeS());
-  SetData(2, "Species " + GetSpeciesS());
+  SetData(2, "Species: " + GetSpeciesS());
 }
 
 void TTree::SetSpecies()

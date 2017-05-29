@@ -23,7 +23,7 @@ enum class TileType
   WATER = 3,
   ROCK = 4,
   STRUCTURE = 5,
-  HUMAN = 9,
+//  HUMAN = 9,
   INVALID
 };
 
@@ -65,6 +65,7 @@ class Tile
 	
 	virtual void InitializeData();
 	virtual void UpdateData();
+//	virtual void AddItem();
 	
 	void AddData(std::string dat) {_data.push_back(dat);}
 	void SetData(int index, std::string dat);
@@ -80,13 +81,13 @@ class Tile
 	TileType _type;
 	friend class HUD;
 	std::vector<string> _data;
-	const std::map<TileType, string> _typeS = {{TileType::GROUND, "Ground"},
+	std::map<TileType, string> _typeS = {{TileType::GROUND, "Ground"},
 												{TileType::TREE, "Tree"},
 												{TileType::SAND, "Sand"},
 												{TileType::ROCK, "Rock"},
 												{TileType::WATER, "Water"},
 												{TileType::STRUCTURE, "Structure"},
-												{TileType::HUMAN, "Human"},
+//												{TileType::HUMAN, "Human"},
 												{TileType::INVALID, "Invalid"}};
   
   
