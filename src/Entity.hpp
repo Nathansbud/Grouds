@@ -13,6 +13,8 @@
 #include <map>
 #include <vector>
 #include <string>
+//#include "ofVec2f.h"
+#include "ofMain.h"
 
 enum class EntityType
 {
@@ -26,8 +28,10 @@ class Entity
 	Entity(EntityType e, int id);
 	~Entity();
 	
-	virtual void Draw(){}
+	virtual void Draw();
 	virtual void Update();
+	
+	void SetPos(float posX, float posY);
 	
 	EntityType GetEntity() {return _entity;}
 	std::string GetEntityS() {return _entityS.at(_entity);}
@@ -44,11 +48,19 @@ class Entity
 	void SetData(int index, std::string dat);
 	std::string GetData(int index);
 	int GetDataSize() {return _data.size();}
+	
+	ofVec2f GetPos() {return _pos;}
+	ofVec2f GetSize() {return _size;}
+	
+	void SetSize(float posX, float posY);
 
 	
   
   private:
 	int _id;
+	ofVec2f _pos;
+	ofVec2f _size;
+
 	EntityType _entity;
   
 	std::vector<std::string> _data;

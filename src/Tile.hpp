@@ -14,6 +14,7 @@
 #include <string>
 #include <map>
 #include "ofMain.h"
+#include "Entity.hpp"
 
 enum class TileType
 {
@@ -52,7 +53,6 @@ class Tile
 	void SetID(int id) {_id = id;}
 	void SetPos(float posX, float posY) {_pos = ofVec2f(posX, posY);}
 	void SetSize(float posX, float posY) {_size = ofVec2f(posX, posY);}
-	
 
 	
 	ofVec2f GetPos() {return _pos;}
@@ -71,15 +71,14 @@ class Tile
 	void SetData(int index, std::string dat);
 	std::string GetData(int index);
 	int GetDataSize() {return _data.size();}
+	
+	bool isEntityOver(Entity* e);
 
-	
-	
   private:
 	int _id;
 	ofVec2f _size;
 	ofVec2f _pos;
 	TileType _type;
-	friend class HUD;
 	std::vector<string> _data;
 	std::map<TileType, string> _typeS = {{TileType::GROUND, "Ground"},
 												{TileType::TREE, "Tree"},

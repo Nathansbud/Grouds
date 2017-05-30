@@ -15,7 +15,7 @@ Tile::Tile() //Needs a default constructor I believe
 
 Tile::Tile(TileType type, int id)
 {
-  _type = type;
+  SetType(type);
   SetID(id);
   InitializeData();
 }
@@ -118,6 +118,14 @@ bool Tile::isOccupied()
 	default:
 	  return true;
   }
+}
+
+bool Tile::isEntityOver(Entity* e)
+{
+  if(e->GetID() == GetID())
+  {
+	return true;
+  } else return false;
 }
 
 bool Tile::isMousedOver(int mouseX, int mouseY)

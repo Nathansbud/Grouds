@@ -13,6 +13,7 @@ EHuman::EHuman(EntityType e, int id)
   SetEntity(e);
   SetID(id);
   InitializeData();
+//  cout << GetData(1) << endl;
 }
 
 
@@ -21,10 +22,10 @@ EHuman::~EHuman()
 
 }
 
-void EHuman::Draw()
-{
-
-}
+//void EHuman::Draw()
+//{
+//  
+//}
 
 void EHuman::InitializeData()
 {

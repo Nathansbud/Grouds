@@ -179,13 +179,16 @@ void WorldMap::LoadMap(MapType mapType, int size)
 		  {
 			_entType = EntityType::HUMAN;
 			entityMap[iter][j] = new EHuman(_entType, id);
+			entityMap[iter][j]->SetSize(ofGetWidth()*0.055555555, ofGetWidth()*0.055555555);
+			entityMap[iter][j]->SetPos(_seedPos.x + (entityMap[iter][j]->GetSize().x * j), _seedPos.y + (tileMap[iter][j]->GetSize().y * iter));
+			cout << to_string(entityMap[iter][j]->GetID()) << endl;
+			_entidMap.emplace(id, entityMap[iter][j]);
+
 		  }
 		  break;
 		default:
 		  break;
 	  }
-	  
-	
 	  id++;
 	}
   }

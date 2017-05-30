@@ -32,8 +32,7 @@ class EHuman : public Entity
 	EHuman(EntityType e, int id);
 	~EHuman();
 	
-	virtual void Draw();
-//	virtual void Update();
+//	virtual void Draw();
 	
 	virtual void InitializeData();
 	virtual void UpdateData();

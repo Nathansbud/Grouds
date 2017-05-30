@@ -17,7 +17,6 @@
 #include <algorithm>
 #include "ofMain.h"
 #include "Tile.hpp"
-#include "THuman.hpp"
 #include "TRock.hpp"
 #include "TTree.hpp"
 #include "Entity.hpp"
@@ -52,6 +51,11 @@ class WorldMap
 	Tile* CheckMoused(int mouseX, int mouseY);
 	Tile* GetMoused() {return _mousedTile;}
 	Tile* GetSelected() {return _selectedTile;}
+	
+	Entity* entat(int entID) {return _entidMap.at(entID);}
+	
+	
+	Tile* GetUnderlyingTile(int index) {return _endidMap.at(index)->GetID;}
 	
 	void SetSelected(Tile* t);
 	void MoveTile(int t1, int t2);
@@ -89,6 +93,7 @@ class WorldMap
 	EntityType _entType;
 	
 	std::map<int, Tile*> _idMap;
+	std::map<int, Entity*> _entidMap;
 	std::map<MapType, std::string> _mapName = {{MapType::FOREST, "Forest"},
 												{MapType::OCEAN, "Ocean"},
 												{MapType::DESERT, "Desert"},
