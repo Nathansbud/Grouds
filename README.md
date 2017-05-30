@@ -54,7 +54,7 @@ However, it can also be launched directly via the Debug.app, bypassing the need 
 
 (Forest)
 
-<img src = "http://i.imgur.com/rckM0n7.jpg>
+<img src = "http://i.imgur.com/rckM0n7.jpg">
 
 <strong>Reflection</strong>
 
